@@ -38,14 +38,9 @@ if st.button("Generate Blog Post"):
     elif not topic.strip():
         st.error("Please enter a valid topic.")
     else:
-        # Set OpenAI API key for LangChain
         try:
-            from langchain.chat_models import ChatOpenAI
-            import openai
-            openai.api_key = api_key  # User-provided API key
-            
-            # Initialize the OpenAI Chat Model
-            llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7)
+            # Initialize the OpenAI Chat Model with user-provided API key
+            llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7, openai_api_key=api_key)
 
             # Define Prompts and Chains
             summary_prompt = PromptTemplate(
